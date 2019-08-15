@@ -4,12 +4,9 @@ var fs = require('fs')
 
 /**
  * 
- * 
  *    异步读取文件 
- *        同步暂不管(基本很少使用)
  * 
  */
-
 
 fs.readFile('lian.txt', 'UTF-8', function (err, data) {
   if (err) {
@@ -32,7 +29,7 @@ fs.readFile('lian.txt', 'UTF-8', function (err, data) {
 
 fs.readFile("lian.png", function (err, data) {
   if (err) throw err
-  console.log(data);
+  // console.log(data);
   console.log(data.length + ' shuai');
 
   // Buffer ---->  String
@@ -41,5 +38,31 @@ fs.readFile("lian.png", function (err, data) {
 
   // String ---->  Buffer
   var buf = Buffer.from(str, 'utf-8');
-  console.log(buf);
+  // console.log(buf);
+
+  // 这里留个问题: 
+  // buf 打印出的内容与原始 Buffer 数据  不一样  是怎么回事 ?
 })
+
+
+/**
+ *
+ *    同步读取文件
+ *
+ */
+
+var data = fs.readFileSync('yi.txt', 'utf-8');
+console.log(data);
+
+var int1 = 123;
+var int2 = 1233;
+
+console.log(int1);
+console.log(int2);
+
+
+/**
+ * 补充:
+ *      同步异步 , 与宏任务和微任务有关 , 且明确一点 , 宏任务必然在微任务之后执行 .
+ *                  (微任务实际上是宏任务其中的一个(步骤)小任务)
+ */
