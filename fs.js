@@ -54,11 +54,13 @@ fs.readFile("lian.png", function (err, data) {
 var data = fs.readFileSync('yi.txt', 'utf-8');
 console.log(data);
 
-var int1 = 123;
-var int2 = 1233;
-
-console.log(int1);
-console.log(int2);
+// 同步读取文件时 , 发生错误 , 用哪个try....catch 捕获错误 , 在使用同步的时候 , 最好加上它 , 可避免一些不必要的麻烦 . 
+try {
+  var data = fs.readFileSync('woqu.text', 'utf-8');
+  console.log(data);
+} catch (err) {
+  console.log(err);
+}
 
 
 /**
